@@ -1,46 +1,65 @@
+
+# wx-bilibili
+
 哔哩哔哩干杯🍻,我在小破站学前端之微信小程序
 
 致谢黑马
 
 使用接口：https://easy-mock.com/mock/5c1dfd98e8bfa547414a5278/bili/navList
 
-index页面
+## index页面
+
 index.json
 
+```
 {
 
 	"navigationBarTitleText":"bilibili"
 
 }
-公共的头部
-新建components文件夹>myTitle文件夹 右键新建component，取名为myTitle。
+```
 
-让它在首页 index 页面显示出来
+### 公共的头部
 
-index.json
+- 新建components文件夹>myTitle文件夹  右键新建component，取名为myTitle。
 
-{
-	"navigationBarTitleText":"bilibili",
-	"usingComponents":{
-	//要使用组件名称   //组件的路径
-	"MyTitle":"../../components/Mytitle/MyTitle"
-	}
-index.wxml
+- 让它在首页 index 页面显示出来
 
-<view class="main">
-	<!-- 公共头部 -->
-    <MyTitle><MyTitle>
-</view>
-MyTitle.wxml
+  index.json
 
-<navigator class='logo'>
-    <image class='logo_img' src='../../icons/logo.png'></image>
-  </navigator>
-首页数据加载
+  ```
+  {
+  	"navigationBarTitleText":"bilibili",
+  	"usingComponents":{
+  	//要使用组件名称   //组件的路径
+  	"MyTitle":"../../components/Mytitle/MyTitle"
+  	}
+  ```
+
+  index.wxml
+
+  ```
+  <view class="main">
+  	<!-- 公共头部 -->
+      <MyTitle><MyTitle>
+  </view>
+  ```
+
+  MyTitle.wxml
+
+  ```
+  <navigator class='logo'>
+      <image class='logo_img' src='../../icons/logo.png'></image>
+    </navigator>
+  ```
+
+### 首页数据加载
+
 注意： 报错http：//....不在以下request合法域名列表中，参考文档！
 
 可以在开发工具中点击 右上角详情，勾选 不校验合法域名。
 
+```
 //index.js
 //获取应用实例
 const app = getApp()
@@ -116,8 +135,11 @@ Page({
 
   }
 })
+```
+
 index.wxml
 
+```
 <scroll-view class='nav' scroll-x> 
 //bindtap 绑定点击事件
       <view bindtap="activeNav" data-index='{{index}}' 
@@ -126,3 +148,4 @@ index.wxml
       {{item.text}} 
       </view>
 </scroll-view>
+```
